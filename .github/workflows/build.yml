@@ -1,0 +1,31 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Test
+        run: dotnet test WinCleaner.slnx -c Release
+
+      - name: Publish app (single-file, self-contained)
+        run: >
+          dotnet publish src/WinCleaner.App -c Release -r win-x64 --self-contained
+          -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true
+          -o publish
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WinCleaner-x64
+          path: publish/WinCleaner.exe
