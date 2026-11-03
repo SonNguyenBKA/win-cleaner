@@ -43,7 +43,7 @@ public class WindowsRecycleBinTests : IDisposable
     [WindowsFact]
     public void Missing_file_throws()
     {
-        Assert.Throws<IOException>(() => new WindowsRecycleBin().Recycle(Path.Combine(_root, "missing")));
+        Assert.Throws<FileNotFoundException>(() => new WindowsRecycleBin().Recycle(Path.Combine(_root, "missing")));
     }
 
     private static List<string> RecycleBinNames()
