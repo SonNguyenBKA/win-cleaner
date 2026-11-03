@@ -7,5 +7,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/WinCleaner.Core.Tests/WinCleaner.Core.Tests.csproj" />
+    <Project Path="tests/WinCleaner.Platform.Tests/WinCleaner.Platform.Tests.csproj" />
   </Folder>
 </Solution>
