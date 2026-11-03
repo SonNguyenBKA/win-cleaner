@@ -31,11 +31,11 @@ Bản Windows của Mac Cleaner (`/Users/Work/mac-cleaner`), dùng cá nhân: d�
 
 ## Các bước
 
-- [ ] **1. Khung project + CI** — solution, 5 project, `.gitignore`, workflow `.github/workflows/build.yml` (build, test, publish zip artifact). Cửa sổ WPF có sidebar 6 mục trống.
+- [x] **1. Khung project + CI** — solution, 5 project, `.gitignore`, workflow `.github/workflows/build.yml` (build, test, publish zip artifact). Cửa sổ WPF có sidebar 6 mục trống.
   Model: `sonnet`
   → verify: `dotnet test tests/WinCleaner.Core.Tests` pass trên Mac; Actions chạy xanh, tải được zip; anh mở `.exe` trên Windows thấy sidebar 6 mục.
 
-- [ ] **2. Core an toàn + đo dung lượng** — `PathGuard`, `SizeCalculator` (async, huỷ được), `Cleaner` (gọi `IRecycleBin`, ghi log), model `CleanItem`.
+- [x] **2. Core an toàn + đo dung lượng** — `PathGuard`, `SizeCalculator` (async, huỷ được), `Cleaner` (gọi `IRecycleBin`, ghi log), model `CleanItem`.
   Model: `opus` (an toàn xoá file)
   → verify: xUnit với thư mục tạm: ngoài whitelist / junction ra ngoài / `C:\Windows\System32` / `C:\` bị từ chối; size thư mục mẫu đúng; test Windows-only trên CI: file vào Recycle Bin + có dòng log.
 
